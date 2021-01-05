@@ -10,6 +10,7 @@
 - Press F1 ingame to enter the menu
 
 #### Some info
+- Will show up when loaded into a world. Will NOT show in the main menu!
 - Click the currently selected WP to open the WP manager
 - Waypoints get saved here: %USERPROFILE%\AppData\LocalLow\Beam Team Games\Stranded Deep\Data\Waypoints.json
 - Saved Waypoints get loaded automatically
@@ -18,5 +19,5 @@
 *Not tested on the Epic version*  
 You are using this at your own risk
 
-![Image](Screenshot1.png)
-![Image](Screenshot2.png)
+![Image](Screenshot1.PNG)
+![Image](Screenshot2.PNG)
