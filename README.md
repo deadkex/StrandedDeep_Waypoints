@@ -19,5 +19,5 @@
 *Not tested on the Epic version*  
 You are using this at your own risk
 
-![Image](Screenshot1.PNG)
-![Image](Screenshot2.PNG)
+![Image](Screenshots/Screenshot1.PNG)
+![Image](Screenshots/Screenshot2.PNG)
