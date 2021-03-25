@@ -14,7 +14,7 @@ namespace SDWaypoints
     {
         public bool Visible = true;
         public bool wpManagerVisible = false;
-        public bool hideAllWaypoints = true;
+        public bool hideAllWaypoints = false;
         private Rect _window;
         private Rect _window2;
         String textfieldinput = "";
@@ -23,6 +23,7 @@ namespace SDWaypoints
         //bool show = false;
         public List<Waypoint> waypoints = new List<Waypoint>();
         string curAssemblyFolder;
+        float wp_size = 15;
 
         public void Start()
         {
@@ -67,8 +68,11 @@ namespace SDWaypoints
                         if (posScreen.z > 0 & posScreen.y < Screen.width - 2)
                         {
                             posScreen.y = Screen.height - (posScreen.y + 1f);
-                            Render.DrawBox(new Vector2(posScreen.x, posScreen.y), new Vector2(15, 15), Color.red);
-                            GUI.Label(new Rect(posScreen.x, posScreen.y - 20, 150f, 50f), wp.name);
+                            Render.DrawBox(new Vector2(posScreen.x, posScreen.y), new Vector2(wp_size, wp_size), Color.red);
+                            var style = new GUIStyle();
+                            style.fontSize = (int)wp_size;
+                            style.normal.textColor = Color.red;
+                            GUI.Label(new Rect(posScreen.x, posScreen.y - wp_size, 150f, 50f), wp.name, style);
                         }
                     }
                 }
@@ -106,6 +110,16 @@ namespace SDWaypoints
                 {
                     waypoints.Add(new Waypoint(textfieldinput, true, PlayerRegistry.LocalPlayer.transform.position));
                     textfieldinput = "";
+
+                    try
+                    {
+                        using (StreamWriter file = File.CreateText(curAssemblyFolder))
+                        {
+                            JsonSerializer serializer = new JsonSerializer();
+                            serializer.Serialize(file, waypoints);
+                        }
+                    }
+                    catch { }
                 }
             }
             if (waypoints.Count == 0)
@@ -150,6 +164,10 @@ namespace SDWaypoints
             }
             if (waypoints.Count == 0 || wpManagerVisible)
                 GUI.enabled = false;
+
+            GUILayout.Label("WP size", new GUILayoutOption[0]);
+            wp_size = GUILayout.HorizontalSlider(wp_size, 10, 50, new GUILayoutOption[0]);
+
             if (GUILayout.Button("Save to file", new GUILayoutOption[0]))
             {
                 try
