@@ -16,8 +16,16 @@
 - Saved Waypoints get loaded automatically
 
 
-*Not tested on the Epic version*  
-You are using this at your own risk
+Seems to work on the epic version.  
+You are using this at your own risk  
+
+#### Changelog
+- V1  
+  - release  
+- V2  
+  - default hideallwaypoints setting is now false
+  - size of waypoints can now be adjusted
+  - waypoints automatically get saved after creating a new one
 
 ![Image](Screenshots/Screenshot1.PNG)
 ![Image](Screenshots/Screenshot2.PNG)
